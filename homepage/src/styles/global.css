@@ -1,0 +1,66 @@
+/* Global: font, design tokens, reset and shared accessibility helpers.
+   Colours are the firm's own. The layout is a law-firm editorial design. */
+
+@font-face { font-family: 'EB Garamond'; src: url('../assets/fonts/eb-garamond-normal.woff2') format('woff2'); font-weight: 400 500; font-style: normal; font-display: swap; }
+@font-face { font-family: 'EB Garamond'; src: url('../assets/fonts/eb-garamond-italic.woff2') format('woff2'); font-weight: 400 500; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Lato'; src: url('../assets/fonts/lato-400.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Lato'; src: url('../assets/fonts/lato-700.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: swap; }
+
+:root {
+  /* Original site values */
+  --teal: #3cbbc9;
+  --teal-link: #2c94a1;
+  --teal-deep: #237781;
+  --charcoal: #202020;
+  --grey-700: #707070;
+  --grey-500: #787878;
+  --grey-300: #b7b4b4;
+  --grey-200: #c2c2c2;
+  --grey-100: #e5e5e5;
+  --paper: #f9f9f9;
+  --white: #ffffff;
+
+  /* Roles */
+  --on-dark: #ffffff;
+  --on-dark-muted: #c2c2c2;
+  --on-light: #202020;
+  --on-light-muted: #555555; /* darkened from #707070 to pass AA on paper */
+  --line-dark: rgba(255, 255, 255, 0.13);
+  --line-light: #d8d8d8;
+  --raised: #2b2b2b;
+
+  --font: 'Lato', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'EB Garamond', Georgia, 'Times New Roman', serif;
+  --gutter: clamp(1rem, 4vw, 3.5rem);
+  --section: clamp(4rem, 8vw, 7.5rem);
+  --max: 1320px;
+  --header: 76px;
+  --radius: 8px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header) + 16px); -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--charcoal); color: var(--on-light);
+  font-family: var(--font); font-size: 1rem; font-weight: 400; line-height: 1.55;
+  -webkit-font-smoothing: antialiased; overflow-x: clip;
+}
+img, svg { display: block; max-width: 100%; }
+img { height: auto; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+h1, h2, h3, p, dl, dd, figure, blockquote { margin: 0; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 400; }
+a { color: inherit; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+address { font-style: normal; }
+
+.sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.skip-link {
+  position: fixed; top: 8px; left: 8px; z-index: 100; padding: 12px 20px;
+  background: var(--charcoal); color: var(--white); border-radius: var(--radius);
+  transform: translateY(-300%); transition: transform 0.2s;
+}
+.skip-link:focus { transform: none; }
+:focus-visible { outline: 3px solid var(--teal-deep); outline-offset: 3px; border-radius: 2px; }
+.hero__offices :focus-visible, .trust :focus-visible, .why :focus-visible, .final :focus-visible, .callbar :focus-visible, .practice__rows :focus-visible { outline-color: var(--teal); }

@@ -1,0 +1,9 @@
+/* Animations: keyframes and reduced-motion overrides. Loaded last so overrides win. */
+
+@keyframes drift { from { transform: translate3d(0, 0, 0); } to { transform: translate3d(-12%, -8%, 0); } }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .practice__glow, .final__glow { animation: none; }
+  .btn::before, .pcard, .why__photo img, .about__photo img { transition: none; }
+}
